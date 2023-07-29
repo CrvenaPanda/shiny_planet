@@ -21,6 +21,9 @@ namespace World.Tiles
             tile.name = x.ToString() + ", " + y.ToString();
             tile.transform.localPosition = new Vector3(x, y, 0);
             tile.transform.parent = this.transform;
+            tile.layer = LayerMask.NameToLayer("Ground");
+
+            tile.AddComponent<BoxCollider2D>();
 
             var spriteRenderer = tile.AddComponent<SpriteRenderer>();
             spriteRenderer.sprite = _sprite;
@@ -34,8 +37,5 @@ namespace World.Tiles
 
         [SerializeField]
         private Sprite _sprite;
-
-        [SerializeField]
-        private Texture _texture;
     }
 }
