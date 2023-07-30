@@ -28,6 +28,11 @@ namespace Player
             // Handle player jumping
             if (_grounded && Input.GetButtonDown("Jump"))
             {
+                // Reset vertical velocity
+                var velocity = _rb.velocity;
+                velocity.y = 0.0f;
+                _rb.velocity = velocity;
+
                 _rb.AddForce(new Vector2(0f, _jumpForce), ForceMode2D.Impulse);
             }
         }
@@ -36,9 +41,9 @@ namespace Player
         [SerializeField] private float _jumpForce = 10f;
         [SerializeField] private Transform _groundCheck;
         [SerializeField] private LayerMask _groundLayer;
+        [SerializeField] private float _groundCheckRadius = 0.2f;
 
         private Rigidbody2D _rb;
         private bool _grounded;
-        private float _groundCheckRadius = 0.2f;
     }
 }
