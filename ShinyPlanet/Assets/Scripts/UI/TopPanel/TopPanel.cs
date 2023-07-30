@@ -7,9 +7,16 @@ namespace UI
     {
         public void SelectItem(int index)
         {
-            SetItemSelectionColor(_selectedItem, Color.clear);
-            _selectedItem = index;
-            SetItemSelectionColor(_selectedItem, _selectionColor);
+            if (_selectedItemIndex == index)
+            {
+                return;
+            }
+
+            SetItemSelectionColor(_selectedItemIndex, Color.clear);
+            _selectedItemIndex = index;
+            SetItemSelectionColor(_selectedItemIndex, _selectionColor);
+
+            Debug.Log("Selected item: " + (index + 1).ToString());
         }
 
         private void Start()
@@ -85,6 +92,6 @@ namespace UI
         private Color _selectionColor;
 
         private List<TopPanelItem> _items;
-        private int _selectedItem = -1;
+        private int _selectedItemIndex = -1;
     }
 }
