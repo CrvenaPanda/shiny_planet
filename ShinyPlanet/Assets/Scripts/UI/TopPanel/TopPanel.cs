@@ -17,6 +17,8 @@ namespace UI
             SetItemSelectionColor(_selectedItemIndex, _selectionColor);
 
             Debug.Log("Selected item: " + (index + 1).ToString());
+
+            UIController.ItemSelected(index);
         }
 
         private void Start()

@@ -54,12 +54,14 @@ namespace GameDebug
 
         private void AddLogMessage(string message, string strackTrace, LogType logType)
         {
+            int ComplexMessageSeparator = message.IndexOf(']');
+            var shortMessage = ComplexMessageSeparator == -1 ? message : message.Substring(ComplexMessageSeparator + 2);
             MoveMessagesUp();
             foreach (var label in _labels)
             {
                 if (label.text == "")
                 {
-                    label.text = message;
+                    label.text = shortMessage;
                     break;
                 }
             }
